@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-LJBhEPEJGdAFxY76sm45k2CwtLH3JlPNFE9DOGTpNJw='; style-src 'self' 'sha256-BKINB3IISvE030ltIxTdPw+XKKfteBVN0Fm9y1JIwss='; img-src 'self' data:; frame-src blob:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="description" content="Password-only local unlock for the AutoLISP Automation Developer portfolio.">
+  <title>TA Portfolio — Unlock</title>
+  <link rel="stylesheet" href="css/login.css">
+  <script src="js/encrypted-portfolio.js" defer></script>
+  <script src="js/login.js" defer></script>
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+  <div id="lock-screen" class="lock-screen">
+    <header class="login-header">
+      <a class="brand" href="#login-panel" aria-label="TA Portfolio"><span class="brand-mark">A<span>_</span></span><span>TA PORTFOLIO<small>AUTOLISP AUTOMATION DEVELOPER</small></span></a>
+      <div class="header-actions"><button id="motion-toggle" type="button" aria-pressed="false" data-i18n="pauseMotion">หยุดภาพเคลื่อนไหว</button><button id="language-toggle" type="button" aria-label="Switch to English">EN</button></div>
+    </header>
+    <main class="login-main">
+      <section class="panel" id="login-panel" aria-labelledby="login-title">
+        <div class="panel-kicker"><span class="status-dot" aria-hidden="true"></span> PRIVATE PORTFOLIO / LOCAL UNLOCK</div>
+        <div class="orbit-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="22"/><ellipse cx="32" cy="32" rx="30" ry="9" transform="rotate(-35 32 32)"/><path d="M32 20V44M20 32H44"/><circle cx="52" cy="19" r="3"/></svg></div>
+        <h1 id="login-title" data-i18n="title">เข้าสู่พอร์ต</h1>
+        <p class="panel-description" data-i18n="description">ใส่รหัสผ่านเพื่อเปิดดูผลงาน<br>AutoLISP Automation Developer</p>
+        <form id="unlock-form" novalidate>
+          <label for="password" data-i18n="passwordLabel">รหัสผ่าน</label>
+          <div class="password-field"><input id="password" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" required aria-describedby="password-help form-status" placeholder="ใส่รหัสผ่านของพอร์ต"><button id="password-toggle" class="password-toggle" type="button" aria-label="แสดงรหัสผ่าน" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12S6 5 12 5S22 12 22 12S18 19 12 19S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+          <p id="password-help" class="password-help" data-i18n="passwordHelp">รหัสผ่านถูกใช้ถอดรหัสในเครื่อง ไม่ส่งออกจากเบราว์เซอร์</p>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+          <button id="unlock-button" class="unlock-button" type="submit"><span data-i18n="unlock">เปิดดูผลงาน</span><span aria-hidden="true">↗</span></button>
+        </form>
+        <div class="privacy-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L20 6V12C20 17 12 22 12 22S4 17 4 12V6Z"/><path d="M8 12L11 15L16 9"/></svg><p data-i18n="privacy">ไม่มีชื่อผู้ใช้ · ไม่บันทึกรหัสผ่าน<br>เนื้อหาพอร์ตจะแสดงหลังถอดรหัสสำเร็จเท่านั้น</p></div>
+        <noscript>ต้องเปิด JavaScript เพื่อถอดรหัสพอร์ตในเบราว์เซอร์ / Enable JavaScript to decrypt this portfolio locally.</noscript>
+      </section>
+    </main>
+    <footer class="login-footer"><span>TA / CAD AUTOMATION</span><p data-i18n="footer">พื้นหลัง Starfield Warp · ไม่มีการส่งข้อมูลล็อกอิน</p><span class="footer-coordinate" aria-hidden="true">✦  LOCAL SPACE</span></footer>
+  </div>
+  <section class="portfolio-view" id="portfolio-view" hidden aria-label="Unlocked portfolio">
+    <header class="viewer-bar"><span>TA / PORTFOLIO <span class="viewer-state" data-i18n="unlocked">เปิดในเบราว์เซอร์นี้</span></span><button id="lock-button" type="button" data-i18n="lock">ล็อกพอร์ต ↗</button></header>
+    <iframe id="portfolio-frame" title="AutoLISP Automation Developer portfolio" sandbox="allow-scripts" referrerpolicy="no-referrer"></iframe>
+  </section>
+</body>
+</html>
