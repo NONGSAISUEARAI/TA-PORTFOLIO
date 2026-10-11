@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <title>Boundary Center Block Placement — AutoLISP Collection</title>
+  <meta name="description" content="Move existing blocks to a boundary-center reference defined by intersecting guide lines. Thai/English command showcase with the supplied GIF; not automatic area-centroid calculation.">
+  <link rel="stylesheet" href="assets/template.css">
+  <link rel="stylesheet" href="assets/page.css">
+  <script src="assets/page.js" defer></script>
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas><div class="atmosphere" aria-hidden="true"></div>
+  <a class="skip" href="#main" data-i18n="skip">ข้ามไปเนื้อหา</a>
+  <header class="topbar wrap">
+    <a class="brand" href="../../../publish/index.html"><span class="brand-mark">A<span>_</span></span><span>AUTOLISP COLLECTION<small>AUTOMATION / BY TA</small></span></a>
+    <nav aria-label="Page navigation"><a href="#workspace" data-i18n="demo">ภาพสาธิต</a><a href="#reference-setup" data-i18n="referenceNav">จุดอ้างอิง</a></nav>
+    <div class="top-actions"><button id="motion" type="button" aria-pressed="false">หยุดดาว</button><button id="language" type="button" aria-label="Switch to English">EN</button></div>
+  </header>
+  <main id="main" class="wrap">
+    <section class="hero" id="top" aria-labelledby="page-title">
+      <div class="breadcrumb"><span>08</span> INSERTION BLOCK <span class="slash">/</span> BOUNDARY CENTER PLACEMENT</div>
+      <div class="hero-row"><div><p class="eyebrow"><span class="dot"></span> GUIDE THE CENTER. PLACE THE BLOCK.</p><h1 id="page-title">Define the center.<br><span>Place your block.</span></h1><p class="hero-th" data-i18n="hero">วางบล็อกโดยอ้างอิงจุดกลางพื้นที่ Boundary</p><p class="hero-description" data-i18n="description">เตรียมเส้นอ้างอิงให้ตัดกันที่จุดกลางพื้นที่ที่ต้องการ แล้วเลือกบล็อกเดิมเพื่อย้ายไปยังจุดตัดนั้น จุดวางอ้างอิงจากเส้นที่เลือก ไม่ได้คำนวณ Centroid ของพื้นที่โดยตรง</p></div><aside class="collection-index"><span class="index-label">COMMAND SHOWCASE</span><strong>03<span>/</span></strong><p>Boundary Center<br>Block Placement</p><span class="template-badge">USER-SUPPLIED GIF</span></aside></div>
+      <div class="facts"><span><strong>CENTER</strong> REFERENCE</span><span><strong>EXISTING</strong> BLOCKS</span><span class="review-state"><span class="dot amber"></span><span data-i18n="state">อ่านโค้ดที่ส่งมา · ยังไม่ทดสอบ CAD</span></span></div>
+    </section>
+    <section class="workspace" id="workspace" aria-labelledby="demo-heading">
+      <div class="section-caption"><span id="demo-heading">THE DEMONSTRATION</span><p data-i18n="caption">GIF ที่คุณบันทึกจาก CAD</p><span>01 / CENTER REFERENCE</span></div>
+      <div class="command-panel">
+        <div class="media-card">
+          <div class="media-top"><span><span class="dot"></span> BOUNDARY CENTER / GUIDE INTERSECTION</span><span class="format">GIF · ORIGINAL</span></div>
+          <div class="media-stage gif-stage" id="media-stage">
+            <img id="demo-gif" width="816" height="548" alt="User-supplied CAD recording of block placement using crossing guides inside a boundary" hidden>
+            <div class="empty-media" id="gif-placeholder"><p class="eyebrow">YOUR CAD RECORDING</p><h2 data-i18n="placeholder">พร้อมดูการวางบล็อกที่จุดอ้างอิง</h2><p data-i18n="placeholderNote">กดเล่นเพื่อเริ่ม GIF ต้นฉบับใหม่<br>816 × 548 px · ประมาณ 6.7 MB</p><button class="play-button" id="play-gif" type="button" data-i18n="play">เล่น GIF ▶</button></div>
+          </div>
+          <p class="video-note" data-i18n="mediaNote">เล่นอัตโนมัติเมื่อเปิดหน้า ยกเว้นตั้งค่าลดภาพเคลื่อนไหว · GIF ต้นฉบับ ไม่บีบอัดหรือเพิ่มความละเอียด</p>
+          <div class="media-bottom"><span class="ready-note">ATTACHED / ORIGINAL GIF</span><div><button type="button" id="toggle-gif" aria-pressed="false" data-i18n="play">เล่น GIF ▶</button><button type="button" id="expand-media" data-i18n="expand">ขยาย ↗</button></div></div>
+          <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+        </div>
+        <aside class="detail-card">
+          <div class="detail-kicker"><span>01</span><span>COMMAND OVERVIEW</span></div><h2>Boundary Center<br>Block Placement</h2>
+          <p class="detail-subtitle" data-i18n="subtitle">จุดกลางจากเส้นอ้างอิง บล็อกเดิมที่จัดวางใหม่</p><p class="detail-description" data-i18n="scope">หาจุดตัดจากเส้นอ้างอิง XLINE/LINE แล้วให้เลือกบล็อกเดิมเพื่อย้ายจุดแทรก ไม่สร้างสำเนาใหม่ และไม่ได้สั่งเปลี่ยนสเกลหรือ Rotation</p>
+          <div class="command-label"><span data-i18n="commandLabel">ชื่อคำสั่งจริง</span><button id="copy-command" type="button" data-i18n="copy">คัดลอก</button></div><code class="command-code" id="command-code">insert_by_intersect_blk2in_</code>
+          <div class="steps-label"><span data-i18n="workflow">ลำดับการใช้งาน</span><span>3 STEPS</span></div>
+          <ol class="steps"><li data-i18n="step1">เตรียมเส้นอ้างอิงให้ตัดกันที่จุดกลางพื้นที่ที่ต้องการ</li><li data-i18n="step2">เลือกเส้นอ้างอิงเพื่อหาจุดตัดที่จะใช้วางบล็อก</li><li data-i18n="step3">เลือกบล็อกเดิมตามจุดที่แสดง เพื่อย้ายไปยังจุดอ้างอิงทีละจุด</li></ol>
+        </aside>
+      </div>
+    </section>
+    <section class="pattern-section" id="reference-setup" aria-labelledby="reference-heading">
+      <div class="section-caption"><span id="reference-heading">THE CENTER REFERENCE</span><p data-i18n="referenceCaption">ตำแหน่งขึ้นอยู่กับเส้นอ้างอิงที่เตรียมไว้</p></div>
+      <div class="placement-modes"><article><span class="mode-kicker">01 / CROSSING GUIDES</span><h2 data-i18n="guideTitle">กำหนดจุดกลางด้วยเส้นอ้างอิง</h2><p data-i18n="guideDescription">เตรียมเส้นให้ตัดกันที่ตำแหน่งกลางพื้นที่ที่ต้องการก่อนรันคำสั่ง ตัวคำสั่งใช้จุดตัดของเส้นที่เลือก ไม่ได้สร้างเส้นอ้างอิงหรืออ่านจุดศูนย์กลางจาก Boundary ให้อัตโนมัติ</p></article><article><span class="mode-kicker">02 / EXISTING BLOCK PLACEMENT</span><h2 data-i18n="placementTitle">เลือกบล็อกให้แต่ละจุด</h2><p data-i18n="placementDescription">แสดงเครื่องหมายของจุดอ้างอิง แล้วให้เลือกบล็อกเดิมเพื่อย้ายไปยังจุดนั้น หากมีหลายจุด จะจัดลำดับจุดตามพิกัด X ไม่ได้จัดเรียงเป็นแถวหรือคอลัมน์ให้โดยเฉพาะ</p></article></div>
+      <p class="reference" data-i18n="demoNote">ภาพสาธิตแสดงการใช้งานที่บันทึกไว้ ไม่ใช่การรับรองจุด Centroid ของทุกรูปทรงหรือผลทดสอบทุกเวอร์ชัน CAD</p>
+    </section>
+  </main>
+  <footer class="footer wrap"><span>TA / AUTOLISP AUTOMATION</span><p data-i18n="footer">08 INSERTION BLOCK · หน้าคำสั่งในเครื่อง · ยังไม่เผยแพร่</p><a href="../../../publish/index.html" data-i18n="catalog">หน้ารวม ↗</a><a href="../Polyline_Vertex_Block_Placement/index.html">Polyline Vertex Placement ↗</a><a href="#top" data-i18n="top">กลับด้านบน ↑</a></footer>
+  <dialog id="media-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><h2 id="dialog-title">Boundary Center Block Placement / GIF</h2><button type="button" id="close-dialog" data-i18n="close">ปิด ×</button></div><img id="dialog-gif" width="816" height="548" alt="Expanded original boundary-center block placement recording"><p data-i18n="dialogNote">GIF ต้นฉบับ · เล่นใหม่ตั้งแต่ต้น · กดปิดเพื่อหยุด</p></dialog>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <title>Xline Intersection Insert — AutoLISP Collection</title>
+  <meta name="description" content="Insert a reference block at selected XLINE intersections. Bilingual source-based AutoLISP showcase with a user-supplied MP4 recording.">
+  <link rel="stylesheet" href="assets/template.css">
+  <link rel="stylesheet" href="assets/page.css">
+  <script src="assets/page.js" defer></script>
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas><div class="atmosphere" aria-hidden="true"></div>
+  <a class="skip" href="#main" data-i18n="skip">ข้ามไปเนื้อหา</a>
+  <header class="topbar wrap"><a class="brand" href="#top"><span class="brand-mark">A<span>_</span></span><span>AUTOLISP COLLECTION<small>AUTOMATION / BY TA</small></span></a><nav aria-label="Page navigation"><a href="#workspace" data-i18n="demo">วิดีโอสาธิต</a></nav><div class="top-actions"><button id="motion" type="button" aria-pressed="false">หยุดดาว</button><button id="language" type="button" aria-label="Switch to English">EN</button></div></header>
+  <main id="main" class="wrap">
+    <section class="hero" id="top" aria-labelledby="page-title"><div class="breadcrumb"><span>08</span> INSERTION BLOCK <span class="slash">/</span> XLINE INTERSECTION INSERT</div><div class="hero-row"><div><p class="eyebrow"><span class="dot"></span> WHERE LINES MEET. BLOCKS BELONG.</p><h1 id="page-title">Find intersections.<br><span>Place the blocks.</span></h1><p class="hero-th" data-i18n="hero">วางบล็อกตามจุดตัดของ XLINE</p><p class="hero-description" data-i18n="description">เลือก XLINE แล้วเลือกบล็อกต้นแบบ เพื่อวางบล็อกตามจุดตัด โดยใช้ชื่อ สเกล และมุมหมุนจากต้นแบบ แล้วเลือกบล็อกใหม่ไว้ทำงานต่อ</p></div><aside class="collection-index"><span class="index-label">INSERTION WORKFLOW</span><strong>01<span>/</span></strong><p>Xline Intersection<br>Insert</p><span class="template-badge">USER-SUPPLIED VIDEO</span></aside></div><div class="facts"><span><strong>01</strong> COMMAND</span><span><strong>18.56s</strong> RECORDING</span><span class="review-state"><span class="dot amber"></span><span data-i18n="state">อ่าน Source แล้ว · ยังไม่ทดสอบ CAD</span></span></div></section>
+    <section class="workspace" id="workspace" aria-labelledby="demo-heading"><div class="section-caption"><span id="demo-heading">THE DEMONSTRATION</span><p data-i18n="caption">วิดีโอจาก CAD ที่คุณแนบมา</p><span>01 / INTERSECTIONS</span></div><div class="command-panel"><div class="media-card"><div class="media-top"><span><span class="dot"></span> XLINE / BLOCK INSERTION</span><span class="format">MP4 · ORIGINAL</span></div><div class="media-stage has-video"><video id="demo-video" src="assets/videos/xline-intersection-insert.mp4" controls playsinline preload="metadata" aria-label="User-supplied Xline Intersection Insert video" aria-describedby="video-note">Your browser does not support HTML video.</video></div><p class="video-note" id="video-note" data-i18n="mediaNote">คลิปต้นฉบับ 814 × 550 px · ประมาณ 18.56 วินาที · ไม่เล่นอัตโนมัติ ไม่บีบอัดหรือเพิ่มความละเอียด</p><div class="media-bottom"><span class="ready-note">ATTACHED / ORIGINAL MP4</span><div><button id="restart-video" type="button" data-i18n="restart">กลับต้นคลิป</button><button id="expand-media" type="button" data-i18n="expand">ขยาย ↗</button></div></div><p class="feedback" id="feedback" role="status" aria-live="polite"></p></div><aside class="detail-card"><div class="detail-kicker"><span>01</span><span>COMMAND OVERVIEW</span></div><h2>Xline Intersection Insert</h2><p class="detail-subtitle" data-i18n="subtitle">ใช้บล็อกต้นแบบ วางตามจุดตัด</p><p class="detail-description" data-i18n="scope">แทรกบล็อกใหม่ที่จุดตัดของ XLINE หากต้นแบบเป็น Dynamic Block จะนำค่าคุณสมบัติมาใช้ ยกเว้นค่า Origin</p><div class="command-label"><span data-i18n="commandLabel">ชื่อคำสั่งจริง</span><button id="copy-command" type="button" data-i18n="copy">คัดลอก</button></div><code class="command-code" id="command-code">xline_intersect_block_xl2_</code><div class="steps-label"><span data-i18n="workflow">ลำดับการใช้งาน</span><span>3 STEPS</span></div><ol class="steps"><li data-i18n="step1">เลือก XLINE ไว้ก่อน หรือเลือกเมื่อคำสั่งถาม</li><li data-i18n="step2">เลือกบล็อกต้นแบบ เพื่ออ่านชื่อ สเกล X และ Rotation</li><li data-i18n="step3">แทรกบล็อกตามรายการจุดตัด แล้วเลือกชุดบล็อกใหม่ด้วย PSELECT</li></ol></aside></div></section>
+    
+    
+  </main>
+  <footer class="footer wrap"><span>TA / AUTOLISP AUTOMATION</span><p data-i18n="footer">08 INSERTION BLOCK · หน้าคำสั่งในเครื่อง · ยังไม่เผยแพร่</p><a href="../../../publish/index.html" data-i18n="catalog">หน้ารวม / Login ↗</a><a href="#top" data-i18n="top">กลับด้านบน ↑</a></footer>
+  <dialog id="media-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><h2 id="dialog-title">Xline Intersection Insert / Video</h2><button id="close-dialog" type="button" data-i18n="close">ปิด ×</button></div><video id="dialog-video" controls playsinline preload="metadata" aria-label="Expanded Xline Intersection Insert video">Your browser does not support HTML video.</video><p data-i18n="dialogNote">เปิดจากเวลาเดียวกับกรอบหลัก · กดเล่นเอง · ปิดเพื่อหยุด</p></dialog>
+</body>
+</html>

@@ -2,6 +2,7 @@ import {readFile,writeFile,mkdir,copyFile,access} from "node:fs/promises";
 import path from "node:path";
 import {webcrypto,randomBytes,createHash} from "node:crypto";
 import {fileURLToPath} from "node:url";
+import {syncCollectionCatalog} from "./sync-collection-catalog.mjs";
 
 // Local packaging only. Never print passwords or place plaintext in publish/.
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
@@ -9,6 +10,7 @@ const inputRoot=path.resolve(process.argv[2]||path.join(root,"source"));
 const sourceDir=path.join(root,"source"),privateDir=path.join(root,"private"),publishDir=path.join(root,"publish");
 const sourceFiles=["index.html","css/home.css","js/home.js"];
 for(const relative of sourceFiles){const destination=path.join(sourceDir,relative);await mkdir(path.dirname(destination),{recursive:true});const original=path.join(inputRoot,relative);if(path.resolve(original)!==path.resolve(destination))await copyFile(original,destination);}
+const catalog=await syncCollectionCatalog(root);
 let html=(await readFile(path.join(sourceDir,"index.html"),"utf8")).replace(/\r\n?/g,"\n");
 const css=(await readFile(path.join(sourceDir,"css/home.css"),"utf8")).replace(/\r\n?/g,"\n");
 let js=(await readFile(path.join(sourceDir,"js/home.js"),"utf8")).replace(/\r\n?/g,"\n");
@@ -22,6 +24,9 @@ html=html.replace('<link rel="stylesheet" href="css/home.css">',`<style>${css}</
 // The source script used defer. Keep it at body end after DOM elements exist.
 const inlineScript=html.match(/<script>[\s\S]*?<\/script>/)[0];
 html=html.replace(inlineScript,"").replace("</body>",`${inlineScript}\n</body>`);
+// Non-executable metadata stays encrypted with the catalogue, not in login.js.
+const allowedPaths=catalog.flatMap(category=>category.programs.map(program=>program.path));
+html=html.replace("</body>",`<script type="application/json" id="catalog-links">${JSON.stringify(allowedPaths).replace(/</g,"\\u003c")}</script>\n</body>`);
 html=html.replace('<meta charset="utf-8">','<meta charset="utf-8">\n<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'unsafe-inline\'; style-src \'unsafe-inline\'; img-src data:; connect-src \'none\'; form-action \'none\'; base-uri \'none\'">');
 // srcdoc documents inherit the parent CSP. Allow only these exact inline bytes.
 const scriptHash=createHash("sha256").update(inlineScript.slice(8,-9)).digest("base64");
@@ -48,11 +53,12 @@ const wrongKey=await webcrypto.subtle.deriveKey({name:"PBKDF2",salt,iterations,h
 let wrongRejected=false;try{await webcrypto.subtle.decrypt(algorithm,wrongKey,ciphertext);}catch{wrongRejected=true;}
 const tampered=ciphertext.slice();tampered[0]^=1;let tamperRejected=false;try{await webcrypto.subtle.decrypt(algorithm,key,tampered);}catch{tamperRejected=true;}
 if(!wrongRejected||!tamperRejected)throw new Error("Encryption validation failed");
-const packageData={version:1,iterations,salt:Buffer.from(salt).toString("base64"),iv:Buffer.from(iv).toString("base64"),ciphertext:Buffer.from(ciphertext).toString("base64")};
+const plaintextSha256=createHash("sha256").update(html).digest("hex");
+const packageData={version:1,iterations,salt:Buffer.from(salt).toString("base64"),iv:Buffer.from(iv).toString("base64"),ciphertext:Buffer.from(ciphertext).toString("base64"),plaintextSha256};
 await mkdir(path.join(publishDir,"js"),{recursive:true});
 const payload=`"use strict";\nwindow.TA_ENCRYPTED_PORTFOLIO = Object.freeze(${JSON.stringify(packageData)});\n`;
 if(payload.includes(password)||payload.includes("Match Block Attributes"))throw new Error("Plaintext leaked into payload");
 await writeFile(path.join(publishDir,"js/encrypted-portfolio.js"),payload,"utf8");
-await writeFile(path.join(privateDir,"build-checks.json"),JSON.stringify({roundTrip:true,wrongPasswordRejected:wrongRejected,tamperRejected,plaintextBytes:plaintext.length,ciphertextBytes:ciphertext.length,sourceSha256:createHash("sha256").update(html).digest("hex")},null,2),"utf8");
+await writeFile(path.join(privateDir,"build-checks.json"),JSON.stringify({roundTrip:true,wrongPasswordRejected:wrongRejected,tamperRejected,plaintextBytes:plaintext.length,ciphertextBytes:ciphertext.length,sourceSha256:plaintextSha256},null,2),"utf8");
 plaintext.fill(0);decrypted.fill(0);password="";html="";
 console.log("Encrypted portfolio built. Round-trip, wrong-password and tamper checks passed. Password remains in private/access-key.json; no credentials printed.");

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-Uv9xZuPpVA+zgymZCBKdaJR4jBTIklT4BFqPnYmdrNw='; style-src 'self' 'sha256-9qZyeYlF7fq3bQUU8dkK6NjoUoDlKWGpHICIOvCq2Jo='; img-src 'self' data:; frame-src blob:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-yq4DEC853v+D6qfc7WPhC0PjCzu6rfXwVwkQr45StQc='; style-src 'self' 'sha256-YzZb679eFJGiUSCAFc2D0twZw4yPw+C/UXdgtMJonf0='; img-src 'self' data:; frame-src blob:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
   <meta name="description" content="Password-only local unlock for the AutoLISP Automation Developer portfolio.">
   <title>TA Portfolio — Unlock</title>
   <link rel="stylesheet" href="css/login.css">
@@ -32,14 +32,14 @@
           <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
           <button id="unlock-button" class="unlock-button" type="submit"><span data-i18n="unlock">เปิดดูผลงาน</span><span aria-hidden="true">↗</span></button>
         </form>
-        <div class="privacy-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L20 6V12C20 17 12 22 12 22S4 17 4 12V6Z"/><path d="M8 12L11 15L16 9"/></svg><p data-i18n="privacy">ไม่มีชื่อผู้ใช้ · ไม่บันทึกรหัสผ่าน<br>เนื้อหาพอร์ตจะแสดงหลังถอดรหัสสำเร็จเท่านั้น</p></div>
+        <div class="privacy-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L20 6V12C20 17 12 22 12 22S4 17 4 12V6Z"/><path d="M8 12L11 15L16 9"/></svg><p data-i18n="privacy">ไม่บันทึกรหัสผ่าน · ไม่ส่งข้อมูลล็อกอิน<br>จำเนื้อหาที่ปลดล็อกชั่วคราวในแท็บนี้จนปิดแท็บหรือกดล็อกพอร์ต</p></div>
         <noscript>ต้องเปิด JavaScript เพื่อถอดรหัสพอร์ตในเบราว์เซอร์ / Enable JavaScript to decrypt this portfolio locally.</noscript>
       </section>
     </main>
     <footer class="login-footer"><span>TA / CAD AUTOMATION</span><p data-i18n="footer">พื้นหลัง Starfield Warp · ไม่มีการส่งข้อมูลล็อกอิน</p><span class="footer-coordinate" aria-hidden="true">✦  LOCAL SPACE</span></footer>
   </div>
   <section class="portfolio-view" id="portfolio-view" hidden aria-label="Unlocked portfolio">
-    <header class="viewer-bar"><span>TA / PORTFOLIO <span class="viewer-state" data-i18n="unlocked">เปิดในเบราว์เซอร์นี้</span></span><button id="lock-button" type="button" data-i18n="lock">ล็อกพอร์ต ↗</button></header>
+    <header class="viewer-bar"><span>TA / PORTFOLIO <span id="viewer-state" class="viewer-state" data-i18n="unlocked">จำการปลดล็อกในแท็บนี้</span></span><button id="lock-button" type="button" data-i18n="lock">ล็อกพอร์ต ↗</button></header>
     <iframe id="portfolio-frame" title="AutoLISP Automation Developer portfolio" sandbox="allow-scripts" referrerpolicy="no-referrer"></iframe>
   </section>
 </body>

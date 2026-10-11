@@ -6,3 +6,6 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}.lock-screen.departing{transform:none}}
 /* Keep the viewer canvas dark while the unlocked Programs document loads. */
 .portfolio-view,#portfolio-frame{background:#030711}
+/* Keep the tab-storage warning visible, including on narrow screens. */
+.viewer-bar button{flex-shrink:0}
+@media(max-width:650px){.viewer-state{display:block;margin-left:0;font-size:8px;line-height:1.4}}

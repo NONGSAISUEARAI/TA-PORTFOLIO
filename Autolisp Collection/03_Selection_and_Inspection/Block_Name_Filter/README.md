@@ -23,6 +23,6 @@ Wildcard reference: [Autodesk wcmatch](https://help.autodesk.com/cloudhelp/2023/
 
 Original: `C:/Users/popul/Videos/20261011-1555-58.9560393.gif`.
 Packaged: `assets/gifs/block-name-filter.gif`.
-29,932,951 bytes; 816 × 550 logical pixels. Copied without transcoding, recompression or upscaling. Manual play; stop removes the animated image (not a frame-accurate pause). Expand starts a separate display from the beginning; closing releases its image. Hidden-page and reduced-motion changes stop playback. No fake animation, fabricated chapters or extracted CAD test results.
+29,932,951 bytes; 816 × 550 logical pixels. Copied without transcoding, recompression or upscaling. Updated 2026-10-12: automatically load/play when the page is visible unless prefers-reduced-motion is enabled. Stop removes the animated image (not a frame-accurate pause); manually stopping stays stopped after tab visibility changes or Back, until Play is pressed. Hidden pages release the image, and returning resumes playback only when it was still requested. Expand stops the main display and starts a separate display from the beginning; closing releases its image. Reduced-motion changes stop playback; manual Play is still available. GIF load errors remain stopped until manual retry. No fake animation, fabricated chapters or extracted CAD test results.
 
 No upload, external fonts, telemetry, or CAD execution. The original recording and main source are untouched.
