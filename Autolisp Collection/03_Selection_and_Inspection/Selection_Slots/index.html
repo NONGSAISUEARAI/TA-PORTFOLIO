@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; media-src 'self' blob:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <title>Selection Slots — AutoLISP Collection</title>
+  <meta name="description" content="A bilingual AutoLISP selection-slot showcase with a user-supplied video walkthrough. CAD testing is pending.">
+  <link rel="stylesheet" href="assets/template.css">
+  <script src="assets/template.js" defer></script>
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="atmosphere" aria-hidden="true"></div>
+  <a class="skip" href="#main" data-i18n="skip">ข้ามไปเนื้อหา</a>
+  <header class="topbar wrap">
+    <a class="brand" href="#top" aria-label="AutoLISP Collection"><span class="brand-mark">A<span>_</span></span><span>AUTOLISP COLLECTION<small>AUTOMATION / BY TA</small></span></a>
+    <nav aria-label="Page navigation"><a href="#workspace" data-i18n="navDemo">กรอบสาธิต</a><a href="#notes" data-i18n="navNotes">ก่อนเผยแพร่</a></nav>
+    <div class="top-actions"><button id="motion" type="button" aria-pressed="false" data-i18n="pauseStars">หยุดดาว</button><button id="language" type="button" aria-label="Switch to English">EN</button></div>
+  </header>
+  <main id="main" class="wrap">
+    <section class="hero" id="top" aria-labelledby="page-title">
+      <div class="breadcrumb"><span>03</span> SELECTION & INSPECTION <span class="slash">/</span> SELECTION SLOTS</div>
+      <div class="hero-row"><div><p class="eyebrow"><span class="dot"></span> SMALL TOOLS. A CLEARER WORKFLOW.</p><h1 id="page-title">Keep your selection.<br><span>Keep your flow.</span></h1><p class="hero-th" data-i18n="heroTitle">เลือกไว้ เรียกกลับ แล้วทำงานต่อ</p><p class="hero-description" data-i18n="heroDescription">ชุดคำสั่งจัดการ Selection Set ผ่าน 10 ช่องเก็บในหน่วยความจำ พร้อมพื้นที่สาธิตการบันทึก เรียกคืน เพิ่ม และนำสมาชิกออก</p></div><aside class="collection-index"><span class="index-label">TOOL COLLECTION</span><strong>01<span>/</span></strong><p>Selection<br>Slots</p><span class="template-badge" data-i18n="template">UI TEMPLATE / รอ GIF จริง</span></aside></div>
+      <div class="facts"><span><strong>04</strong> COMMANDS</span><span><strong>10</strong> MEMORY SLOTS</span><span><strong>01</strong> SHARED HELPER</span><span class="review-state"><span class="dot amber"></span><span data-i18n="review">อ่าน Source แล้ว · ยังไม่ทดสอบ CAD</span></span></div>
+    </section>
+    <section class="workspace" id="workspace" aria-label="Command demonstrations">
+      <div class="section-caption"><span>THE WORKFLOW</span><p data-i18n="choose">เลือกคำสั่งเพื่อเตรียมภาพสาธิต</p><span>01 — 04</span></div>
+      <div class="command-tabs" role="tablist" aria-label="Selection slot commands">
+        <button role="tab" id="tab-save" aria-controls="command-panel" aria-selected="true" tabindex="0" data-command="save"><span>01</span><strong>Save</strong><small data-i18n="tabSave">บันทึกชุดเลือก</small><b aria-hidden="true">↗</b></button>
+        <button role="tab" id="tab-load" aria-controls="command-panel" aria-selected="false" tabindex="-1" data-command="load"><span>02</span><strong>Load</strong><small data-i18n="tabLoad">เรียกชุดเลือกกลับ</small><b aria-hidden="true">↗</b></button>
+        <button role="tab" id="tab-add" aria-controls="command-panel" aria-selected="false" tabindex="-1" data-command="add"><span>03</span><strong>Add</strong><small data-i18n="tabAdd">เพิ่มสมาชิก</small><b aria-hidden="true">↗</b></button>
+        <button role="tab" id="tab-remove" aria-controls="command-panel" aria-selected="false" tabindex="-1" data-command="remove"><span>04</span><strong>Remove</strong><small data-i18n="tabRemove">นำสมาชิกออก</small><b aria-hidden="true">↗</b></button>
+      </div>
+      <div class="command-panel" id="command-panel" role="tabpanel" aria-labelledby="tab-save" tabindex="0">
+        <div class="media-card">
+          <div class="media-top"><span><span class="dot"></span> <span id="media-label">COLLECTION / WALKTHROUGH</span></span><span class="format">VIDEO · MP4</span></div>
+          <div class="media-stage" id="media-stage">
+            <div class="frame-grid" aria-hidden="true"></div><span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span><span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+            <div class="empty-media" id="empty-media"><div class="placeholder-icon" aria-hidden="true"><svg viewBox="0 0 120 96"><path class="back" d="M18 27L59 7L102 27L60 48Z"/><path class="middle" d="M18 45L59 25L102 45L60 66Z"/><path class="front" d="M18 64L59 44L102 64L60 85Z"/><path class="crosshair" d="M5 15V5H15M105 5H115V15M5 81V91H15M105 91H115V81"/></svg><span>+</span></div><span class="eyebrow">A SPACE FOR THE REAL WORK</span><h2 id="placeholder-title" data-i18n="placeholderTitle">พื้นที่สำหรับ GIF ของคุณ</h2><p id="placeholder-text" data-i18n="placeholderText">ใส่ภาพบันทึกจาก CAD เพื่อเล่า workflow จริง<br>ยังไม่มีภาพสาธิตในเทมเพลตนี้</p><code id="expected-file">save-selection.gif</code></div>
+            <video id="demo-video" controls playsinline preload="metadata" aria-label="Selection Slots video walkthrough" aria-describedby="video-note">Your browser does not support HTML video.</video>
+            <span class="stage-caption" id="stage-caption">01 / SAVE SELECTION</span><span class="stage-coordinate" aria-hidden="true">+ X / Y</span>
+          </div>
+          <p class="video-note" id="video-note" data-i18n="videoNote">วิดีโอรวมทั้งชุด · แท็บเปลี่ยนรายละเอียด ไม่ได้ข้ามไปยังช่วงในคลิป</p>
+          <div class="media-bottom"><span class="ready-note" id="media-state">ATTACHED VIDEO / MP4</span><div><button type="button" id="clear-media" disabled data-i18n="clear">ใช้คลิปเดิม</button><button type="button" id="expand-media" data-i18n="expand">ขยาย ↗</button></div></div>
+          <div class="upload-row"><button type="button" class="upload-button" id="choose-media"><span aria-hidden="true">＋</span><span data-i18n="upload">ทดลองวิดีโออื่นจากเครื่อง</span></button><p data-i18n="localNote">มีคลิป MP4 แนบในโฟลเดอร์แล้ว<br>คลิปที่เลือกใหม่เป็น preview ชั่วคราว · ไม่อัปโหลด</p><input type="file" id="video-input" accept="video/mp4,video/webm,.mp4,.webm" hidden></div>
+          <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+        </div>
+        <aside class="detail-card"><div class="detail-kicker"><span id="detail-number">01</span><span>COMMAND OVERVIEW</span></div><h2 id="detail-title">Save selection</h2><p class="detail-subtitle" id="detail-subtitle">บันทึกชุดเลือกไว้ใช้ต่อ</p><p class="detail-description" id="detail-description"></p><div class="command-label"><span data-i18n="commandLabel">ชื่อคำสั่งจริง</span><button type="button" id="copy-command" data-i18n="copy">คัดลอก</button></div><code class="command-code" id="command-code">save_selection_savess_</code><div class="steps-label"><span data-i18n="stepsLabel">ลำดับที่เตรียมบันทึกเป็น GIF</span><span>3 STEPS</span></div><ol class="steps" id="steps"></ol><div class="dependency"><span class="dependency-icon" aria-hidden="true">⌘</span><div><span data-i18n="dependencyLabel">Custom helper</span><p id="dependency-value"></p></div></div><p class="scope-note" id="scope-note"></p></aside>
+      </div>
+    </section>
+    <section class="notes" id="notes" aria-labelledby="notes-title"><div class="notes-heading"><span class="eyebrow">SOURCE FIRST. DEMO NEXT.</span><h2 id="notes-title" data-i18n="notesTitle">เตรียมให้พร้อม ก่อนเล่าเป็นผลงาน</h2><p data-i18n="notesIntro">หน้านี้คือกรอบนำเสนอ ยังไม่ใช่การรับรองว่าโค้ดพร้อมใช้งาน</p></div><div class="note-grid"><article><span>01 / SOURCE</span><h3 data-i18n="noteOneTitle">รวมคำสั่งให้ครบชุด</h3><p data-i18n="noteOne">4 คำสั่งใช้ ssA–ssJ ร่วมกัน โดย Load ต้องแนบ TA:combine_selection_set_ เพิ่มอีก 1 ฟังก์ชัน</p></article><article><span>02 / REVIEW</span><h3 data-i18n="noteTwoTitle">ตรวจช่องเก็บและการยกเลิก</h3><p data-i18n="noteTwo">รายการตรวจสถานะของ Save/Load ขาด ssG และควรตรวจ nil ก่อน sslength เมื่อผู้ใช้ไม่ได้เลือกวัตถุ</p></article><article><span>03 / DEMONSTRATION</span><h3 data-i18n="noteThreeTitle">ใส่ GIF จากการทดสอบจริง</h3><p data-i18n="noteThree">แสดงชื่อคำสั่ง ขั้นตอนเลือกวัตถุ และผลที่เกิดขึ้นจริง ไม่ใช้ภาพแนวคิดแทนผลทดสอบ CAD</p></article></div></section>
+  </main>
+  <footer class="footer wrap"><span>TA / AUTOLISP AUTOMATION</span><p data-i18n="footer">Selection & Inspection · เทมเพลตในเครื่อง · ยังไม่เผยแพร่</p><a href="#top" data-i18n="backTop">กลับด้านบน ↑</a></footer>
+  <dialog id="media-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><h2 id="dialog-title">Selection Slots / Video</h2><button type="button" id="close-dialog" data-i18n="close">ปิด ×</button></div><video id="dialog-video" controls playsinline preload="metadata" aria-label="Expanded Selection Slots video">Your browser does not support HTML video.</video><p data-i18n="dialogNote">วิดีโอรวมทั้งชุด · ยังไม่เผยแพร่</p></dialog>
+</body>
+</html>

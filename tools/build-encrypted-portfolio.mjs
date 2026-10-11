@@ -34,7 +34,7 @@ await writeFile(publicIndexPath,publicIndex,"utf8");
 await mkdir(privateDir,{recursive:true});
 let password;
 const keyPath=path.join(privateDir,"access-key.json");
-try{password=JSON.parse(await readFile(keyPath,"utf8")).password;if(typeof password!=="string"||password.length<20)throw new Error("Existing password is invalid; use a strong passphrase");}
+try{const savedKey=JSON.parse(await readFile(keyPath,"utf8"));password=savedKey.password;const minimum=savedKey.allowShortPassword===true?8:20;if(typeof password!=="string"||password.length<minimum)throw new Error("Existing password is invalid; use a strong passphrase or an explicitly selected short-password override");}
 catch(error){if(error.code!=="ENOENT")throw error;password=randomBytes(24).toString("base64url");await writeFile(keyPath,JSON.stringify({password,note:"PRIVATE: do not commit, upload or share this file. Use this password locally to unlock the portfolio."},null,2),{flag:"wx",mode:0o600});}
 const salt=webcrypto.getRandomValues(new Uint8Array(16)),iv=webcrypto.getRandomValues(new Uint8Array(12)),encoder=new TextEncoder();
 const passwordBytes=encoder.encode(password),material=await webcrypto.subtle.importKey("raw",passwordBytes,"PBKDF2",false,["deriveKey"]);passwordBytes.fill(0);

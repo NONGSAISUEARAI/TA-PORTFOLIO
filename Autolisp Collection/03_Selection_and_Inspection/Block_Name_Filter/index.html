@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <title>Block Name Filter — AutoLISP Collection</title>
+  <meta name="description" content="Select block references by effective name and wildcard pattern. Bilingual source-based command showcase with a supplied GIF.">
+  <link rel="stylesheet" href="assets/template.css">
+  <link rel="stylesheet" href="assets/page.css">
+  <script src="assets/page.js" defer></script>
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas><div class="atmosphere" aria-hidden="true"></div>
+  <a class="skip" href="#main" data-i18n="skip">ข้ามไปเนื้อหา</a>
+  <header class="topbar wrap">
+    <a class="brand" href="#top"><span class="brand-mark">A<span>_</span></span><span>AUTOLISP COLLECTION<small>AUTOMATION / BY TA</small></span></a>
+    <nav aria-label="Page navigation"><a href="#workspace" data-i18n="demo">ภาพสาธิต</a><a href="#notes" data-i18n="reviewNav">ข้อควรตรวจ</a><a href="../Selection_Slots/index.html">Selection Slots ↗</a></nav>
+    <div class="top-actions"><button id="motion" type="button" aria-pressed="false">หยุดดาว</button><button id="language" type="button" aria-label="Switch to English">EN</button></div>
+  </header>
+  <main id="main" class="wrap">
+    <section class="hero" id="top" aria-labelledby="page-title">
+      <div class="breadcrumb"><span>03</span> SELECTION & INSPECTION <span class="slash">/</span> BLOCK NAME FILTER</div>
+      <div class="hero-row"><div><p class="eyebrow"><span class="dot"></span> FIND THE NAME. KEEP THE MATCHES.</p><h1 id="page-title">One pattern.<br><span>The right blocks.</span></h1><p class="hero-th" data-i18n="hero">เลือกบล็อกด้วยชื่อที่ต้องการ</p><p class="hero-description" data-i18n="description">กรองบล็อกในชุดที่เลือกด้วย Effective Name และ wildcard pattern แล้วส่งชุดที่ตรงเงื่อนไขให้ PSELECT โดยไม่แก้ไขตัววัตถุ</p></div><aside class="collection-index"><span class="index-label">COMMAND SHOWCASE</span><strong>02<span>/</span></strong><p>Block Name<br>Filter</p><span class="template-badge">USER-SUPPLIED GIF</span></aside></div>
+      <div class="facts"><span><strong>01</strong> COMMAND</span><span><strong>01</strong> CUSTOM HELPER</span><span><strong>INSERT</strong> FILTER</span><span class="review-state"><span class="dot amber"></span><span data-i18n="state">อ่านโค้ดที่ส่งมา · ยังไม่ทดสอบ CAD</span></span></div>
+    </section>
+    <section class="workspace" id="workspace" aria-labelledby="demo-heading">
+      <div class="section-caption"><span id="demo-heading">THE DEMONSTRATION</span><p data-i18n="caption">GIF ที่คุณบันทึกจาก CAD</p><span>01 / NAME MATCH</span></div>
+      <div class="command-panel">
+        <div class="media-card">
+          <div class="media-top"><span><span class="dot"></span> BLOCK NAME / WILDCARD FILTER</span><span class="format">GIF · ORIGINAL</span></div>
+          <div class="media-stage gif-stage" id="media-stage">
+            <img id="demo-gif" width="816" height="550" alt="User-supplied CAD recording for the block name filter" hidden>
+            <div class="empty-media" id="gif-placeholder"><p class="eyebrow">YOUR CAD RECORDING</p><h2 data-i18n="placeholder">พร้อมดูการทำงานจริง</h2><p data-i18n="placeholderNote">กดเล่นเพื่อโหลด GIF ต้นฉบับ<br>816 × 550 px · ประมาณ 30 MB</p><button class="play-button" id="play-gif" type="button" data-i18n="play">เล่น GIF ▶</button></div>
+          </div>
+          <p class="video-note" data-i18n="mediaNote">ใช้ GIF ที่แนบมาโดยไม่บีบอัดหรือขยายความละเอียด ภาพนี้ไม่ใช่การรับรองว่าทุกกรณีผ่านการทดสอบ</p>
+          <div class="media-bottom"><span class="ready-note">ATTACHED / ORIGINAL GIF</span><div><button type="button" id="toggle-gif" aria-pressed="false" data-i18n="play">เล่น GIF ▶</button><button type="button" id="expand-media" data-i18n="expand">ขยาย ↗</button></div></div>
+          <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+        </div>
+        <aside class="detail-card"><div class="detail-kicker"><span>01</span><span>COMMAND OVERVIEW</span></div><h2>Block Name Filter</h2><p class="detail-subtitle" data-i18n="subtitle">กรองชื่อบล็อกในชุดที่เลือก</p><p class="detail-description" data-i18n="scope">ใช้ชุดเลือกก่อนรันคำสั่งได้ หากไม่มีจะให้เลือกใหม่ กรองเฉพาะ INSERT ไม่ใช่การค้นหาทั้ง Drawing อัตโนมัติ และไม่ค้น Text หรือ Attribute</p><div class="command-label"><span data-i18n="commandLabel">ชื่อคำสั่งจริง</span><button id="copy-command" type="button" data-i18n="copy">คัดลอก</button></div><code class="command-code" id="command-code">SFBW_FINDING_STRING_NAME_BLOCK_SFBSTR_</code><div class="steps-label"><span data-i18n="workflow">ลำดับการใช้งานจากโค้ด</span><span>3 STEPS</span></div><ol class="steps"><li data-i18n="step1">เลือกบล็อกไว้ก่อน หรือเลือกเมื่อคำสั่งถาม</li><li data-i18n="step2">ป้อน pattern เช่น *A* เพื่อหาชื่อที่มี A</li><li data-i18n="step3">เก็บบล็อกที่ชื่อผ่านเงื่อนไข แล้วส่งให้ PSELECT</li></ol><div class="dependency"><span class="dependency-icon" aria-hidden="true">⌘</span><div><span>Custom helper / Lee Mac</span><p><code>LM:effectivename</code></p></div></div><p class="scope-note" data-i18n="helperNote">พบ helper ในไฟล์หลักที่บรรทัด 37: อ่าน EffectiveName เมื่อมี property นี้ มิฉะนั้นอ่าน Name ต้องโหลด helper และตรวจสภาพแวดล้อม Visual LISP/ActiveX ก่อนใช้แยกไฟล์</p></aside>
+      </div>
+    </section>
+    <section class="pattern-section" aria-labelledby="pattern-title"><div class="section-caption"><span id="pattern-title">PATTERN REFERENCE</span><p data-i18n="patternNote">ตัวอย่าง syntax ไม่ใช่ผลทดสอบจาก GIF</p></div><div class="patterns"><div><code>A</code><span data-i18n="exact">ชื่อตรงกับ A</span></div><div><code>*A*</code><span data-i18n="contains">ชื่อมี A อยู่ส่วนใดก็ได้</span></div><div><code>A*</code><span data-i18n="starts">ชื่อขึ้นต้นด้วย A</span></div><div><code>A?</code><span data-i18n="single">A ตามด้วยอักขระ 1 ตัว</span></div></div><p class="reference"><span data-i18n="caseNote">โค้ดใช้ strcase ทั้งสองฝั่ง จึงไม่แยกตัวพิมพ์ใหญ่–เล็ก และไม่ได้เติม * ให้เอง</span> · <a href="https://help.autodesk.com/cloudhelp/2023/ENU/AutoCAD-AutoLISP-Reference/files/GUID-EC257AF7-72D4-4B38-99B6-9B09952A53AD.htm" target="_blank" rel="noopener noreferrer">Autodesk / wcmatch ↗</a></p></section>
+    <section class="notes" id="notes" aria-labelledby="notes-title"><div class="notes-heading"><span class="eyebrow">SOURCE FIRST. CLAIMS SECOND.</span><h2 id="notes-title" data-i18n="notesTitle">จุดที่ควรตรวจ ก่อนแจกคำสั่ง</h2><p data-i18n="notesIntro">คำอธิบายอ้างอิงโค้ดที่คุณส่งมา ไม่ได้รันคำสั่ง CAD และไม่ได้แก้ต้นฉบับ</p></div><div class="note-grid"><article><span>01 / INPUT</span><h3 data-i18n="inputTitle">การยกเลิกและค่าเริ่มต้น</h3><p data-i18n="inputNote">ยังไม่มีการตรวจ nil ก่อน sslength เมื่อไม่ได้เลือกวัตถุ กด Enter ครั้งแรกอาจได้ pattern เป็น nil หากยังไม่มีค่าที่จำไว้</p></article><article><span>02 / DEPENDENCY</span><h3 data-i18n="dependencyTitle">แยกไฟล์ต้องแนบ helper</h3><p data-i18n="dependencyNote">เรียก LM:effectivename ซึ่งให้เครดิต Lee Mac ในไฟล์หลัก ตรวจการโหลด ActiveX และการใช้ PSELECT ใน CAD เป้าหมายก่อนระบุรุ่นที่รองรับ</p></article><article><span>03 / HARDENING</span><h3 data-i18n="hardeningTitle">เก็บตัวแปรให้เป็นขอบเขต</h3><p data-i18n="hardeningNote">defun ยังไม่มี local variables ควรแยกตัวแปรชั่วคราวออกจาก pattern ที่ตั้งใจจำ และทดสอบกรณีไม่พบชื่อกับ pattern ที่มีช่องว่าง</p></article></div></section>
+  </main>
+  <footer class="footer wrap"><span>TA / AUTOLISP AUTOMATION</span><p data-i18n="footer">03 Selection & Inspection · หน้าคำสั่งในเครื่อง · ยังไม่เผยแพร่</p><a href="#top" data-i18n="top">กลับด้านบน ↑</a></footer>
+  <dialog id="media-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><h2 id="dialog-title">Block Name Filter / GIF</h2><button type="button" id="close-dialog" data-i18n="close">ปิด ×</button></div><img id="dialog-gif" width="816" height="550" alt="Expanded user-supplied block name filter GIF"><p data-i18n="dialogNote">GIF ต้นฉบับ · เล่นใหม่ตั้งแต่ต้น · กดปิดเพื่อหยุด</p></dialog>
+</body>
+</html>
