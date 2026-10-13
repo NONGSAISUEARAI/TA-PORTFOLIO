@@ -19,7 +19,8 @@ assert.equal(categories.at(-1).title,'INSERTION BLOCK');
 assert.equal(categories.at(-1).programs.length,3);
 assert.deepEqual(categories.at(-1).programs.map(program=>program.title),['Boundary Center Block Placement','Polyline Vertex Block Placement','Xline Intersection Insert']);
 const programs=categories.flatMap(category=>category.programs);
-assert.deepEqual(programs.map(program=>program.title).sort(),['Block Name Filter','Boundary Center Block Placement','Polyline Vertex Block Placement','Selection Slots','Xline Intersection Insert']);
+assert.deepEqual(programs.map(program=>program.title).sort(),['Block Layer Recolor','Block Name Filter','Boundary Center Block Placement','Polyline Vertex Block Placement','Selection Slots','Xline Intersection Insert']);
+assert.deepEqual(categories[0].programs.map(program=>program.path),['01_Block_and_Dynamic_Block/Block_Layer_Recolor/index.html']);
 for(const program of programs){await access(path.join(root,'Autolisp Collection',program.path));assert.equal(program.version,null);assert.equal(program.updated,null);}
 const script=await read('publish/js/login.js'),payload=await read('publish/js/encrypted-portfolio.js'),parentHtml=await read('publish/index.html');
 const packageData=JSON.parse(payload.match(/Object\.freeze\((\{[\s\S]*\})\);/)[1]);
@@ -56,4 +57,4 @@ context.location.href='https://example.com/TA-PORTFOLIO/publish/index.html';dest
 element('lock-button').handlers.get('click')();destination=null;send(programs[0].path);assert.equal(destination,null,'Relock must release links');
 const originalGif=await readFile('C:/Users/popul/Videos/20261011-1555-58.9560393.gif'),packagedGif=await readFile(path.join(root,'Autolisp Collection/03_Selection_and_Inspection/Block_Name_Filter/assets/gifs/block-name-filter.gif'));assert.equal(hash(originalGif),hash(packagedGif));
 html='';
-console.log('Passed: folder inventory (8 categories / 5 pages), exact generated data, existing paths, local client decryption, CSP hashes, password clearing, allowed navigation for file/HTTPS, rejection of unlisted paths/foreign messages, relock, and unchanged GIF. Browser layout/playback not tested. No credentials printed.');
+console.log('Passed: folder inventory (8 categories / 6 pages), exact generated data, existing paths, local client decryption, CSP hashes, password clearing, allowed navigation for file/HTTPS, rejection of unlisted paths/foreign messages, relock, and unchanged GIF. Browser layout/playback not tested. No credentials printed.');

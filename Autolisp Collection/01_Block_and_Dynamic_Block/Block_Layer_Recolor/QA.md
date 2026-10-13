@@ -1,0 +1,18 @@
+# Local verification — 2026-10-14
+
+Completed the pending Block Layer Recolor portfolio showcase from the supplied project backup. Local implementation only. The Sites presentation guidance influenced the wide, uncropped demonstration frame, followed by the command workflow and the practical shared-definition effect. The collection branding and existing GIF interaction logic were reused.
+
+- Original AutoLISP inspected as text only; no CAD execution, source modification, LSP distribution, performance claim or compatibility certification.
+- Original and packaged GIF both SHA-256 `728F649843EF23BC227908A1892DD7F0D454F121B13F27FC675983FFC8682070`. GIF89a, 1310 × 432 logical pixels, 102,191,678 bytes; no transcoding or recompression.
+- New page JavaScript syntax passed. Unique IDs, script element references, relative assets/navigation, hash anchors and English translation coverage passed. Public HTML/JS contain the real command name, ByLayer behavior and shared-definition effect, with no CAD helper names, source listings or downloadable LSP.
+- Existing simulated GIF tests passed for autoplay, reduced motion, hidden page/Back handling, manual Stop/Play, expand/close cleanup, TH/EN, error/manual retry and unchanged recording.
+- Build scanned 8 categories / 6 pages and preserved the existing password. Encryption round-trip, wrong-password rejection and tamper rejection passed. Category 01 contains the new page; category 03 still has 2 pages; category 08 still has 3.
+- Catalogue verification passed: generated data matches folders, new path is in the encrypted allowlist, decrypted HTML hash and parent CSP hashes match, input password clears, listed file/HTTPS navigation works, unlisted paths and foreign-window messages are rejected, relock releases navigation.
+- Existing simulated tab-session tests passed, including reload, Back/blank-frame recovery, child readiness/timeout, isolation, explicit lock races, tamper/stale/oversize/rebuild rejection and unavailable/quota storage fallback.
+- Codex in-app browser loaded the real new page and original GIF; image natural size was 1310 × 432. Observed TH → EN → TH switching, Stop removing the main image source, expanded dialog opening while the main image is stopped, and Close releasing the expanded image. No browser warning/error logs were returned.
+- Responsive browser checks: 1280 × 900 viewport / document width 1265; 390 × 844 viewport / document width 375. No horizontal document overflow. Mobile displayed GIF width 311. Temporary viewport override reset afterward. Visual screenshots: `previews/block-layer-recolor-desktop.jpg` and `previews/block-layer-recolor-mobile.jpg` in the project root.
+- Exact-file local preview served login, new page, script and GIF with HTTP 200. Private key, plaintext source homepage and page README each returned 404. The helper binds only 127.0.0.1, excludes documentation/private/source/backups, and is stopped after QA.
+
+Verification limits: no CAD execution, browser matrix, deployed HTTPS test, complete animation/frame timing validation, live browser unlock/Back integration test or independent security audit. Login/Back integration was checked using the existing Node simulated DOM tests. Detail page/media are plaintext and directly accessible outside the encrypted directory. The 102.2 MB original GIF may take time to load.
+
+Backup: `backups/Before_Block_Layer_Recolor_20261014`. No Git commit, GitHub publication, hosted deployment, password change, ZIP refresh, or modification of the supplied JSON/application queue. The backup is historical data; its pending message is implemented here without changing app state. Rebuild invalidates older tab caches, so one new unlock is required after Refresh.

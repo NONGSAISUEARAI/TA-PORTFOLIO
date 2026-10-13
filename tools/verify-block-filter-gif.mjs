@@ -8,6 +8,7 @@ import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const relative=process.argv[2]||'03_Selection_and_Inspection/Block_Name_Filter';
 const examples={
+  '01_Block_and_Dynamic_Block/Block_Layer_Recolor':{src:'assets/gifs/block-layer-recolor.gif',original:'C:/Users/popul/AppData/Local/Temp/codex-clipboard-1fa6590b-58b5-4b34-9201-50ce301ea897.gif'},
   '08_Insertion_Block/Boundary_Center_Block_Placement':{src:'assets/gifs/boundary-center-block-placement.gif',original:'C:/Users/popul/AppData/Local/Temp/codex-clipboard-2a3541d9-df0f-4106-9053-1a3b8f3ea225.gif'},
   '03_Selection_and_Inspection/Block_Name_Filter':{src:'assets/gifs/block-name-filter.gif',original:'C:/Users/popul/Videos/20261011-1555-58.9560393.gif'},
   '08_Insertion_Block/Polyline_Vertex_Block_Placement':{src:'assets/gifs/polyline-vertex-block-placement.gif',original:'C:/Users/popul/AppData/Local/Temp/codex-clipboard-50f9cf76-c629-4d9a-b60a-dfba98abed3c.gif'}

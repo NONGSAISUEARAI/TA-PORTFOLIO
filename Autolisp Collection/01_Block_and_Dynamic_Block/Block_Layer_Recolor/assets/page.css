@@ -1,0 +1,21 @@
+/* Keep the collection branding and the original wide CAD recording. */
+.breadcrumb,.footer{flex-wrap:wrap}
+.footer{gap:14px}
+.gif-stage{aspect-ratio:1310/432;min-height:0;background:#20202f}
+.gif-stage img{position:relative;display:block;width:100%;height:auto;object-fit:contain}
+.gif-stage .empty-media{padding:26px 20px}
+.play-button{margin-top:18px;border:1px solid #9bbffb66;border-radius:6px;padding:10px 22px;color:#e5efff;background:linear-gradient(120deg,#234a79,#2b2854)}
+.command-panel{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:0;margin-bottom:40px}
+.detail-card{min-width:0}
+.command-code{overflow-wrap:anywhere;word-break:break-word}
+.scope-cards{display:grid;align-content:start;gap:18px;min-width:0}
+.scope-cards article{padding:25px;border:1px solid var(--line);border-radius:10px;background:#0b1728bb}
+.mode-kicker{font-family:Consolas,monospace;font-size:9px;letter-spacing:1px;color:#8eafdc}
+.scope-cards h2{font-size:20px;font-weight:500;color:#d7e7fb;margin:18px 0 10px}
+.scope-cards p{color:var(--muted);font-size:12px;line-height:1.9;margin:0}
+.scope-cards .reference{font-size:11px;padding:0 6px}
+#workflow{margin-top:35px}
+#media-dialog{width:min(1350px,calc(100% - 32px))}
+#dialog-gif{display:block;width:100%;height:auto;max-height:75dvh;object-fit:contain;background:#20202f}
+[hidden]{display:none!important}
+@media(max-width:760px){.command-panel{grid-template-columns:1fr}.gif-stage{aspect-ratio:auto;min-height:0}.gif-stage .empty-media{padding:24px 12px}.gif-stage .empty-media h2{font-size:19px}.play-button{margin-top:12px;padding:8px 18px}.scope-cards article{padding:20px}.video-note{font-size:10px}.ready-note{max-width:45%}}
